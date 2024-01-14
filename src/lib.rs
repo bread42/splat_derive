@@ -103,7 +103,7 @@ pub fn derive_splat(item: TokenStream) -> TokenStream {
 
             quote!(
                 impl #struct_name {
-                    fn splat(v: #shared_type) -> Self {
+                    pub fn splat(v: #shared_type) -> Self {
                         Self {
                             #(#field_idents: v.clone()),*
                         }
@@ -117,7 +117,7 @@ pub fn derive_splat(item: TokenStream) -> TokenStream {
 
             quote!(
                 impl #struct_name {
-                    fn splat(v: #shared_type) -> Self {
+                    pub fn splat(v: #shared_type) -> Self {
                         // we don't actually need the field_idents here, we just need the repetition of the iterator
                         Self(#(#field_idents v.clone()),*)
                     }
